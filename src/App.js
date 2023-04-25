@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './Navbar.js';
-import Home from './Home.js';
-import Content from './Content';
-import Footer from './Footer.js';
-import Slideshow from './Slideshow.js';
+import Navbar from './components/navbar/Navbar.js';
+import Home from './components/home/Home.js';
+import Content from './components/content/Content.js';
+import Footer from './components/footer/Footer.js';
+import Slideshow from './components/slideshow/Slideshow.js';
 function App() {
   return (
     <Router>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './index.css';
+import './Slideshow.css';
 
 const Slideshow = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -42,7 +42,7 @@ const Slideshow = () => {
           className={`mySlides fade ${currentSlide === index ? "active" : ""}`}
         >
           <img src={slide.image} alt={slide.alt} className="ss" 
-style={{ objectFit: "cover", opacity: 0.6 }}
+style={{ objectFit: "cover", opacity: 0.6, width: '100%', height: '100%'}}
           />
           <div className="text" id="tt">
             <h1>{slide.title}</h1>

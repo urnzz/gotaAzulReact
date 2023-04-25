@@ -1,0 +1,79 @@
+
+.slideshow-container {
+  position: relative;
+  height:800px;
+  margin: auto;
+}
+.custom-shape-divider-bottom-1668283969 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1668283969 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 103px;
+  transform: rotateY(180deg);
+}
+.custom-shape-divider-bottom-1668283969 .shape-fill {
+  fill: #FFFFFF;
+}
+.mySlides {
+  display: none;
+  height:800px;
+  background: #244d61;
+  overflow: hidden;
+}
+
+.mySlides.active {
+  display: block;
+}
+.ss{
+  object-fit: cover;
+  opacity: 0.6;
+}
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+  background-color:  #75E2FF;
+}
+#tt{
+  color: #f2f2f2;
+  position:absolute;
+  bottom: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}

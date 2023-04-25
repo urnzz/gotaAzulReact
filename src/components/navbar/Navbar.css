@@ -1,0 +1,93 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo{
+font-size: 46px;
+color: #ffffff
+}
+.topnav {
+  position: fixed;
+  z-index:1;
+  background-color: #fff;
+  height:70px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.topnav #myLinks {
+  display:flex;
+  float: right;
+  padding: 20px 0;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
+  transition: all 0.3s ease-in-out;
+}
+.topnav a {
+  display: block;
+  color: #75E2FF;
+  text-decoration: none;
+  padding: 7px 15px;
+  transition: all 0.3s ease-in-out;
+}
+.topnav a.icon {
+  display: none;
+}
+.topnav.active {
+  background-color: #244d61;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.topnav.active a {
+  color: #ffffff;
+}
+.topnav.active span:hover {
+  color: #ffffff;
+}
+
+.topnav.active .container {
+  padding: 10px 0;
+}
+
+.topnav current{
+    color: #75E2FF;
+    font-weight: bold;
+}
+.topnav current:hover{
+    color: #ffffff;
+    font-weight: bold;
+}
+.topnav a:hover {
+  color: #75E2FF;
+  font-weight: bold;
+}
+.column{
+  text-align: center;
+  width: 50%;
+  float: left; 
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.content h2,
+.content h3 {
+  font-size: 150%;
+  margin: 20px 0;
+}
+
+.content p {
+  color: #555;
+  line-height: 30px;
+  letter-spacing: 1.2px;
+}
+*::after,
+*::before {
+  margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
+}
