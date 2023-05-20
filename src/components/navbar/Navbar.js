@@ -1,31 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
+import AuthContext from '../../context/AuthContext';
 
 function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { setUsername, setIsAuthenticated } = useContext(AuthContext);
+
+  const [userState, setUserState] = useState({username: null, isAuthenticated: false});
+
   useEffect(() => {
-    const nav = document.querySelector('.topnav');
+    const userIsAuthenticated = checkUserAuthentication();
+    setIsAuthenticated(userIsAuthenticated);
+  
+    if (userIsAuthenticated) {
+      const fetchedUsername = fetchUsername();
+      setUsername(fetchedUsername);
+      setUserState({username: fetchedUsername, isAuthenticated: userIsAuthenticated});
+    }
+  }, [setUsername, setIsAuthenticated]);
+  
 
-    const fixNav = () => {
-      if (window.scrollY > nav.offsetHeight + 150) {
-        nav.classList.add('active');
-      } else {
-        nav.classList.remove('active');
-      }
-    };
-
-    const handleResize = () => {
-      ham();
-    };
-
-    window.addEventListener('scroll', fixNav);
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('scroll', fixNav);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
+  useEffect(() => {
+    setUserState({username: null, isAuthenticated: false});
+   }, []);
+   
+  
   function ham() {
     var x = document.getElementById('myLinks');
     if (window.innerWidth >= 768) {
@@ -40,25 +42,50 @@ function Navbar() {
       x.style.fontSize = '12px';
     }
   }
+  const checkUserAuthentication = () => {
+    const token = localStorage.getItem('userToken');
+    return token !== null;
+  };
+
+
+  const fetchUsername = () => {
+    return localStorage.getItem('username');
+    
+  };
+  const handleLogout = () => {
+    localStorage.removeItem('userToken');
+
+    setIsAuthenticated(false);
+    setUsername(null);
+    setUserState({username: null, isAuthenticated: false});
+
+    navigate('/');
+  };
+
+  const handleLogin = () => {
+    navigate('/login');
+  };
+  const isHomePage = location.pathname === '/';
 
   return (
-    <nav className="topnav" id="topnav">
-      {/* ... */}
-         <a style={{ float: 'left', fontSize: '30px' }} href="./index.html">
-        Gota<span>Azul</span>
-      </a>
+    <nav className={`topnav ${isHomePage ? 'home-page' : ''}`} id="topnav">
+      <a style={{ float: 'left', fontSize: '30px' }} href="/">Gota<span>Azul</span></a>
       <div id="myLinks">
-        <a href="index.html" className="current">
-          Início
-        </a>
+        <a href="/" className={`link-item ${isHomePage ? 'current' : ''}`}>Início</a>
         <a href="#beneficios">Benefícios</a>
         <a href="#sobre">Quem somos?</a>
         <a href="#duvidas">Dúvidas frequentes</a>
         <a href="#maps">Localização</a>
+        {userState.isAuthenticated ? (
+          <>
+            <a className="username">{userState.username}</a>
+            <button className="logout-button" onClick={handleLogout}>Logout</button>
+          </>
+        ) : (
+          <button className="login-button" onClick={handleLogin}>Login</button>
+        )}
       </div>
-      <a href="javascript:void(0);" className="icon" onClick={ham}>
-        <i className="fa fa-bars"></i>
-      </a>
+      <a href="javascript:void(0);" className="icon" onClick={ham}><i className="fa fa-bars"></i></a>
     </nav>
   );
 }

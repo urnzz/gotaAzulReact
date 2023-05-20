@@ -12,18 +12,18 @@ const Footer = () => {
       <p>(17)98129-1322</p>
       </div>
    </div>
-<div class="column25" id="cc">
+<div className="column25" id="cc">
       <h1>Social Links</h1>
-        <div class="social-icons">
+        <div className="social-icons">
 
           <a href="https://pt-br.facebook.com/GotaAzulbarretos/" title="facebook">
-            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+            <i className="fa fa-facebook-square" aria-hidden="true"></i>
           </a> 
           <a href="https://www.instagram.com/gotaazulbarretos/" title="instagram">
-            <i class="fa fa-instagram" aria-hidden="true"></i>
+            <i className="fa fa-instagram" aria-hidden="true"></i>
           </a>
           <a href="https://api.whatsapp.com/send/?phone=5517988218741&amp;text=Tenho+interesse+nas+aulas%2C+poderia+me+passar+mais+informações%3F&amp;type=phone_number&amp;app_absent=0" title="instagram">
-            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+            <i className="fa fa-whatsapp" aria-hidden="true"></i>
           </a>
 
         </div>   
