@@ -7,27 +7,33 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { setUsername, setIsAuthenticated } = useContext(AuthContext);
-
-  const [userState, setUserState] = useState({username: null, isAuthenticated: false});
-
-  useEffect(() => {
-    const userIsAuthenticated = checkUserAuthentication();
-    setIsAuthenticated(userIsAuthenticated);
-  
-    if (userIsAuthenticated) {
-      const fetchedUsername = fetchUsername();
-      setUsername(fetchedUsername);
-      setUserState({username: fetchedUsername, isAuthenticated: userIsAuthenticated});
-    }
-  }, [setUsername, setIsAuthenticated]);
-  
-
-  useEffect(() => {
-    setUserState({username: null, isAuthenticated: false});
-   }, []);
+  // directly use these values from context instead of creating a local state
+  const { username, isAuthenticated, setUsername, setIsAuthenticated } = useContext(AuthContext);
    
-  
+  const checkUserAuthentication = () => {
+    const token = localStorage.getItem('userToken');
+    return token !== null;
+  };
+
+  const fetchUsername = () => {
+    return localStorage.getItem('username');
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('username'); // also remove the username from local storage
+    setIsAuthenticated(false);
+    setUsername(null);
+    navigate('/');
+  };
+
+  const handleLogin = () => {
+    navigate('/login');
+  };
+  const handleRegister = () => {
+    navigate('/register');
+  };
+  const isHomePage = location.pathname === '/';
   function ham() {
     var x = document.getElementById('myLinks');
     if (window.innerWidth >= 768) {
@@ -42,30 +48,6 @@ function Navbar() {
       x.style.fontSize = '12px';
     }
   }
-  const checkUserAuthentication = () => {
-    const token = localStorage.getItem('userToken');
-    return token !== null;
-  };
-
-
-  const fetchUsername = () => {
-    return localStorage.getItem('username');
-    
-  };
-  const handleLogout = () => {
-    localStorage.removeItem('userToken');
-
-    setIsAuthenticated(false);
-    setUsername(null);
-    setUserState({username: null, isAuthenticated: false});
-
-    navigate('/');
-  };
-
-  const handleLogin = () => {
-    navigate('/login');
-  };
-  const isHomePage = location.pathname === '/';
 
   return (
     <nav className={`topnav ${isHomePage ? 'home-page' : ''}`} id="topnav">
@@ -76,13 +58,14 @@ function Navbar() {
         <a href="#sobre">Quem somos?</a>
         <a href="#duvidas">Dúvidas frequentes</a>
         <a href="#maps">Localização</a>
-        {userState.isAuthenticated ? (
+        {isAuthenticated ? (
           <>
-            <a className="username">{userState.username}</a>
+            <a className="username">{username}</a>
             <button className="logout-button" onClick={handleLogout}>Logout</button>
           </>
-        ) : (
+        ) : (<div>
           <button className="login-button" onClick={handleLogin}>Login</button>
+          <button className="register-button" onClick={handleRegister}>Register</button></div>
         )}
       </div>
       <a href="javascript:void(0);" className="icon" onClick={ham}><i className="fa fa-bars"></i></a>
