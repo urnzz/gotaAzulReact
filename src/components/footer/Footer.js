@@ -3,8 +3,8 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-     <footer>
-  <div className="footer1">
+    <footer className="footer-container">  
+    <div className="footer1">
     <div className="column25" id="aa"><h1>Serviços</h1><p>Natação</p><p>Hidroginástica</p></div>
     <div className="column25" id="bb"><h1>Contatos</h1>
       <div className="contatos">

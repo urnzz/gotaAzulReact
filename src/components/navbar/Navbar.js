@@ -53,7 +53,7 @@ function Navbar() {
     <nav className={`topnav ${isHomePage ? 'home-page' : ''}`} id="topnav">
       <a style={{ float: 'left', fontSize: '30px' }} href="/">Gota<span>Azul</span></a>
       <div id="myLinks">
-        <a href="/" className={`link-item ${isHomePage ? 'current' : ''}`}>Início</a>
+        <a href="/gotaAzulR" className={`link-item ${isHomePage ? 'current' : ''}`}>Início</a>
         <a href="#beneficios">Benefícios</a>
         <a href="#sobre">Quem somos?</a>
         <a href="#duvidas">Dúvidas frequentes</a>

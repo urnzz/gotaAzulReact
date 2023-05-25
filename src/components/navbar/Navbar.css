@@ -91,3 +91,38 @@ color: #ffffff
   padding: 0;
   box-sizing: border-box;
 }
+.login-button {
+  padding: 10px;
+  border: none;
+  color: #fff;
+  background-color: #75E2FF;
+  cursor: pointer;
+}
+.register-button {
+  border: none;
+  padding: 10px;
+  height: 100%;
+  color: #fff;
+  background-color: #75E2FF;
+  cursor: pointer;
+}
+.logout-button {
+  border: none;
+  padding: 10px;
+  height: 100%;
+  color: #fff;
+  background-color: #75E2FF;
+  cursor: pointer;
+}
+.logout-button:hover {
+  background-color: #0056b3;
+
+}
+.register-button:hover {
+  background-color: #0056b3;
+
+}
+.login-button:hover {
+  background-color: #0056b3;
+
+}

@@ -3,7 +3,30 @@
   text-align: center;
   
 }
+ss
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-container {
+  margin-top: auto;
+  padding: 20px 0;
+  height: 100px;
+}
+
+.footer1 {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .social-icons a {
   color: #fff;
   line-height: 30px;
@@ -84,9 +107,6 @@
   text-align: center;
   padding: 5px;
   color: white;
-  position:static;
-
-  
 }
 .footer1 {
   background-color: #244d61;
@@ -94,8 +114,6 @@
   text-align: left;
   padding: 5px;
   color: white;
-  position:static;
-  
 }
 .fa {
   padding: 20px;
